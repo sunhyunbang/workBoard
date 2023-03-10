@@ -43,9 +43,9 @@ repositories {
 
 dependencies {
     // jpa
-	//implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     // swagger new version
-    implementation 'org.springdoc:springdoc-openapi-ui'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.14'
 	//implementation 'io.springfox:springfox-boot-starter:3.0.0'
 	//implementation 'io.springfox:springfox-swagger-ui:3.0.0'
     // maria db driver
