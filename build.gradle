@@ -43,7 +43,7 @@ repositories {
 
 dependencies {
     // h2 => data source setting 전 임시 테이블
-    implementation 'com.h2database:h2'
+    //implementation 'com.h2database:h2'
     // jpa
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     // swagger new version
@@ -58,7 +58,7 @@ dependencies {
     // spring security
     implementation 'org.springframework.boot:spring-boot-starter-security'
     // data jdbc
-    // implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     // web
     implementation 'org.springframework.boot:spring-boot-starter-web'
     // devtools (live reload, automatic restart 등 기능)

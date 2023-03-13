@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Getter
 @Entity // Entity name
-@Table(name ="SAMPLE") // database table name
+@Table(name ="SAMPLE_TB") // database table name
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
