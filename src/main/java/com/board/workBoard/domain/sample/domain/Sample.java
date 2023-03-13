@@ -2,10 +2,7 @@ package com.board.workBoard.domain.sample.domain;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Entity // Entity name
@@ -14,15 +11,27 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Builder
 public class Sample {
+    // entity.class 구성
 
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long pk;
 
-    @Column(name = "NAME")
-    private String name;
+    @Column(name = "USER_EMAIL", nullable = false)
+    private String userEmail;
 
-    @Column(name = "AGE")
-    private Integer age;
+    @Column(name = "USER_PW", nullable = false)
+    private String userPw;
 
-    // entity.class 구성
+    @Column(name = "USER_NM", nullable = false)
+    private String userNm;
+
+    @Column(name = "USER_TEL", nullable = true)
+    private String userTel;
+
+    @Column(name = "USE_YN", nullable = false)
+    private String useYn;
+//    @Column(name = "ROLE")
+//    private String role;
+
 }
