@@ -1,8 +1,8 @@
 package com.board.workBoard.domain.sample.application;
 
-import io.swagger.v3.oas.annotations.servers.Server;
+import org.springframework.stereotype.Service;
 
-@Server
+@Service
 public class SampleService {
 
     // service.class, handler.class 구성

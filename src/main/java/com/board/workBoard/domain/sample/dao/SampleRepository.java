@@ -10,6 +10,6 @@ public interface SampleRepository extends JpaRepository<Sample, Long> {
 
     // repository.class(interface), dao.class 구성
 
-    @Query(value = "select * from Sample where :#{sample.id}", nativeQuery = true)
-    void saveSample(Sample sample);
+//    @Query(value = "select * from Sample where :#{sample.id}", nativeQuery = true)
+//    void saveSample(Sample sample);
 }
