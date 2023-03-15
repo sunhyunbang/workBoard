@@ -22,7 +22,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated() // 모든 요청은 인증 필요
                 )
                 .formLogin(login -> login // form 방식 로그인 사용
-                        .defaultSuccessUrl("/main",true) // 로그인 성공 시 main 이동
+                        .defaultSuccessUrl("/",true) // 로그인 성공 시 main 이동
                         .permitAll() // main은 모든 권한 허용
                 )
                 .logout(withDefaults()); // 기본 로그아웃 => /logout
