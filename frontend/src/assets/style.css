@@ -1,0 +1,205 @@
+@charset "euc-kr";
+
+/* text */
+.bold{font-family:NanumBarunGothicBold !important}
+.mid{vertical-align:middle !important}
+.u{text-decoration:underline !important}
+.lh19{line-height:19px !important}
+.fs13{font-size:13px !important}
+.fs15{font-size:15px !important}
+.ls-1{letter-spacing:-1px}
+.txef1{color:#68a7d7 !important}
+.txef2{color:#ef766e !important}
+.txef3{color:#f99d1c !important}
+.txef4{color:#316fe4 !important}
+.txef5{color:#29b517 !important}
+.txef6{color:#0072bc !important}
+.txef7{color:#00ab51 !important}
+.txef8{color:#f26522 !important}
+.txef9{color:#f7941d !important}
+.txef10{color:#1c7abb !important}
+.txef11{color:#187cc5 !important}
+.txef12{color:#296ad5 !important}
+
+/* icon */
+.icn{display:inline-block;overflow:hidden;background-color:transparent;background-image:url(http://image.findall.co.kr/FACache/member/common/icon.png);background-repeat:no-repeat;white-space:nowrap;vertical-align:top}
+.icn.ssl{background-image:url(https://image.findall.co.kr/FACache/member/common/icon.png)}
+.icn_note{width:11px;height:14px;background-position:0 0}
+.icn_bu{width:4px;height:4px;background-position:-21px 0}
+.icn_bu2{width:4px;height:4px;background-position:-103px 0}
+.icn_bu3{width:5px;height:6px;background-position:-21px -8px}
+.icn_bu4{width:9px;height:11px;background-position:-117px 0}
+.icn_bu5{width:5px;height:5px;background-position:-151px -71px}
+.icn_bu6{width:16px;height:16px;background-position:-159px 0}
+.icn_bu7{width:19px;height:16px;background-position:-211px 0}
+.icn_bu8{width:3px;height:3px;background-position:-240px 0}
+.icn_bu9{width:16px;height:16px;background-position:-185px 0}
+.icn_cuation{width:14px;height:14px;background-position:-35px 0}
+.icn_person{width:16px;height:16px;background-position:-59px 0}
+.icn_build{width:21px;height:36px;background-position:0 -24px}
+.icn_build2{width:39px;height:36px;background-position:-122px -24px}
+.icn_build3{width:68px;height:55px;background-position:0 -70px}
+.icn_home{width:36px;height:33px;background-position:-31px -24px}
+.icn_home2{width:35px;height:34px;background-position:-77px -24px}
+.icn_arr{width:8px;height:13px;background-position:-85px 0}
+.icn_arr2{width:10px;height:15px;background-position:-152px -86px}
+.icn_person2{width:64px;height:52px;background-position:-78px -70px}
+.icn_leaf{width:12px;height:19px;background-position:-137px 0}
+.icn_hp{width:82px;height:135px;background-position:0 -135px}
+.icn_email{width:104px;height:75px;background-position:-92px -135px}
+.icn_tv{width:130px;height:117px;background-position:0 -281px}
+.icn_hpemail{width:76px;height:63px;background-position:-140px -281px}
+.icn_key{width:80px;height:59px;background-position:0 -409px}
+/*.icn_{width:;height:;background-position:}*/
+
+/* btn */
+.btns{display:inline-block;min-height:16px;margin-bottom:1px;padding-right:12px;padding-left:12px;vertical-align:top;text-align:center !important;white-space:nowrap}
+.btns1{padding:7px 9px 4px;background-color:#3baee8;border-radius:4px;-webkit-border-radius:4px;font-family:NanumBarunGothicBold;color:#fff}
+.btns1 .icn_note{margin:-1px 5px 0 0}
+.btns1 .icn_person{margin:-2px 5px 0 0}
+.btns2{background-color:#6f7e91;padding:0;height:51px;line-height:53px !important;font-size:23px !important;color:#fff}
+.btns2-1{background-color:#7d6f91}
+.btns2-2{background-color:#129db2}
+.btns2-3{background-color:#f99d1c}
+.btns3{padding:4px 5px 2px 5px;background-color:#bbb;font-size:11px !important;color:#fff}
+.btns4{padding:0;background-color:#ccc;height:51px;line-height:53px !important;font-size:23px !important;color:#fff}
+.btns5{padding:10px 0;background-color:#f26522;line-height:17px !important;font-size:15px !important;color:#fff}
+.btns6{padding:10px 0;background-color:#a6a6a6;line-height:17px !important;font-size:15px !important;color:#fff}
+.btns7{height:38px;line-height:38px !important;*height:28px !important;*line-height:28px !important;padding:0;background-color:#6f7e91;font-size:15px !important;color:#fff}
+.btns8{padding:13px 0;background-color:#298b40;line-height:25px !important;font-size:23px !important;color:#fff}
+.btns9{height:40px;line-height:42px !important;padding:0;background-color:#6f7e91;font-size:19px !important;color:#fff}
+.btns9-1{background-color:#ccc}
+.btns10{padding:2px 5px 1px 5px;background-color:#bbb;font-size:11px;color:#fff}
+.btns11{height:30px;line-height:32px !important;padding:0;background-color:#6f7e91;font-size:13px !important;color:#fff}
+.btns12{padding:7px 9px 4px;background-color:#a6a6a6;border-radius:4px;-webkit-border-radius:4px;font-family:NanumBarunGothicBold;color:#fff}
+.btns13{position:relative;padding:6px 30px 5px 11px;border-radius:3px;-webkit-border-radius:3px;background-color:#6f7e91;font-family:NanumBarunGothicBold !important;text-align:left !important;line-height:17px;font-size:15px !important;color:#fff}
+.btns13 .icn_bu4{position:absolute;top:50%;right:10px;margin-top:-6px}
+.btns13-1{background-color:#36a9d9}
+.btns13-2{background-color:#49b43b}
+.btns13-3{background-color:#f69934}
+.btns13-4{background-color:#f45f31}
+.btns14{height:30px;line-height:32px !important;padding:0;background-color:#6f7e91;font-size:17px !important;color:#fff}
+.btns14-1{background-color:#ccc}
+/*.btns{padding:;background-color:;font-size:;color:}*/
+.vamfix .btns{vertical-align:middle}
+
+/* form */
+.inp{height:26px;padding:7px 0 3px 7px;*height:16px;*padding-top:6px;background:#f9f9f9;border:1px solid #bbb;font-family:NanumBarunGothicBold;line-height:20px;font-size:15px;*line-height:16px}
+.inp.active{padding:6px 0 2px 5px;*padding-top:5px;border:2px solid #418af4}
+.inp2{height:26px;padding:7px 0 3px 7px;*height:16px;*padding-top:6px;background:#fff;border:1px solid #bbb;font-family:NanumBarunGothicBold;line-height:20px;font-size:15px;*line-height:16px}
+.inp2.active{padding:6px 0 2px 5px;*padding-top:5px;border:2px solid #418af4}
+.txtarea{padding:18px;overflow:hidden;overflow-y:auto;border:1px solid #ddd}
+.txtarea, .txtarea p, .txtarea ol, .txtarea li, .txtarea b, .txtarea h3, .txtarea h2{line-height:19px}
+.txtarea b, .txtarea h3{font-family:NanumBarunGothicBold}
+.txtarea h2{font-size:17px}
+.txtarea h3{margin-top:20px}
+.txtarea li h4{margin-top:10px}
+.txtarea li{margin-top:4px}
+.txtarea ol ol, .txtarea ol ul, .txtarea ol ol, .txtarea ol li p{margin-left:15px}
+.txtarea table{margin:20px 0; border:1px solid #ccc}
+.txtarea table th, .txtarea table td{font-size:11px}
+.txtarea table th{padding:10px 5px 5px 5px; border:1px solid #ccc; background:#f5f5f5;font-weight:normal;font-family:NanumBarunGothicBold}
+.txtarea table td{padding:7px 7px 3px 7px; border:1px solid #ccc}
+
+select.select{height:38px;padding:5px 5px 5px 4px;*height:26px; letter-spacing:0 !important;font-family:NanumBarunGothicBold;font-size:15px;border:1px solid #bbb}
+
+/* caution */
+span.base_caution{display:inline-block}
+.base_caution, .base_caution a{line-height:17px;font-size:11px}
+.base_caution{color:#666}
+.base_caution .icn_cuation{margin:-2px 3px 0 0;vertical-align:middle}
+.base_caution2{line-height:15px;font-size:13px !important}
+.base_caution2 .icn_bu{margin:-1px 6px 0 0;vertical-align:middle}
+.base_caution3{line-height:17px;font-size:15px;color:#ef766e}
+.base_caution4{position:relative;padding:12px 0 10px 28px;background:#f5f5f5;line-height:15px}
+.base_caution4, .base_caution4 b, .base_caution4 a{font-size:11px !important}
+.base_caution4 .icn_bu{position:absolute;top:15px;left:21px}
+.box_caution{padding:10px 10px 9px;border-radius:4px;background:#6f7e91;font-family:NanumBarunGothic;color:#fff}
+.box_caution .icn_bu2{margin:4px 5px 0 0}
+
+/* title */
+.hst{padding-bottom:10px;border-bottom:2px solid #616f81;line-height:21px;font-size:19px;color:#333}
+.hst2{line-height:19px;font-size:17px;color:#31343d}
+.hst3{line-height:21px;font-size:19px;color:#333}
+
+/* list */
+.lstSt, .lstSt li{clear:both}
+.lstSt{padding:20px 22px 15px 32px;border-bottom:1px solid #ddd;background:#f5f5f5}
+.lstSt li{position:relative;margin-bottom:7px;padding-left:11px;line-height:19px}
+.lstSt .icn_bu{position:absolute;top:6px;left:0}
+.lstSt2 li{position:relative;clear:both;margin-top:7px;padding-left:10px;line-height:17px}
+.lstSt2 li:first-child{margin-top:0}
+.lstSt2 li .icn_bu{position:absolute;top:5px;left:0}
+.lstSt2 li .btview{margin:-1px 0 0 4px}
+.lstSt2 li.ty{line-height:24px}
+.lstSt2 li.ty .icn_bu{top:8px;*top:4px}
+.lstSt3, .lstSt3 li{clear:both}
+.lstSt3{padding:17px 22px;border-top:2px solid #616f81;background:#f5f5f5}
+.lstSt3 li{position:relative;margin-top:10px;padding-left:10px;color:#555}
+.lstSt3 li:first-child{margin-top:0}
+.lstSt3 .icn_bu{position:absolute;top:3px;left:0}
+.lstSt4{padding:10px 0;border-bottom:1px solid #d6d6d6}
+.lstSt4 li{float:left;margin-left:30px}
+.lstSt4 label{font-size:15px;color:#333}
+
+/* tab */
+.tabst{clear:both;background:url(http://image.findall.co.kr/FACache/member/common/tab_bg_line.gif) repeat-x 0 100%}
+.tabst.ssl{background-image:url(https://image.findall.co.kr/FACache/member/common/tab_bg_line.gif)}
+.tabst li{float:left;margin-left:1px}
+.tabst li:first-child{margin-left:0}
+.tabst li a{display:block;width:256px;padding:1px 1px 0 1px;border-width:1px 1px 0 1px;border-style:solid;border-color:#c1c1c1 #c1c1c1 #c1c1c1;height:47px;line-height:47px;text-align:center;font-size:17px;color:#333}
+.tabst li a.selected{padding:0;background:#fff;border-color:#6f7e91;border-width:2px 2px 0 2px}
+
+/* table */
+.tblst{clear:both;border-bottom:1px solid #ddd}
+.tblst .lineL{border-left:1px dashed #ddd !important}
+.tblst table{width:100%}
+.tblst th, .tblst td{padding-top:7px;padding-bottom:7px;border-top:1px dashed #ddd}
+.tblst th > span, .tblst th label, .tblst td, .tblst td label, .tblst td a{line-height:17px;font-size:15px}
+.tblst th{text-align:left}
+.tblst th > span, .tblst th > label{margin-left:10px;font-weight:normal}
+.tblst th.vt > span, .tblst th.vt > label{margin-top:18px}
+.tblst td > div{margin-left:20px}
+.tblst td.caution{background:#f5f5f5}
+.tblst td.caution ul{margin-left:30px}
+.tblst td.caution li{position:relative;margin-top:7px;padding-left:11px;line-height:19px}
+.tblst td.caution .icn_bu{position:absolute;top:6px;left:0}
+.tblst tr.wideH th, .tblst tr.wideH td{padding-top:13px;padding-bottom:13px}
+.tblst tr.wideH2 th, .tblst tr.wideH2 td{padding-top:16px;padding-bottom:16px}
+.tblst tr.wideH3 th, .tblst tr.wideH3 td{padding-top:19px;padding-bottom:19px}
+.tblst tr.wideH4 th, .tblst tr.wideH4 td{padding-top:7px;padding-bottom:0}
+.tblst tr.wideH5 th, .tblst tr.wideH5 td{padding-top:26px;padding-bottom:26px}
+.tblst tr.type2 td, .tblst tr.type2 td label{font-size:13px}
+.tblst td.photo{background:#f5f5f5;text-align:center}
+.tblst td.photo > span{display:inline-block;width:150px;height:150px;border:1px solid #cacaca;background:url(https://image.findall.co.kr/FACache/member/common/bg_profile.gif)}
+.tblst td.photo > span img{width:150px;height:150px;vertical-align:top}
+.tblst td.epaper, .tblst td.epaper a{font-size:13px}
+.tblst td.epaper a{text-decoration:underline;color:#316fe4}
+.tblst td .map_box{position:relative;margin-left:0;*position:none}
+.tblst td .map_box .map {margin:6px 0;width:688px;height:227px;border:1px solid #d5d5d5; }
+.tblst td .map_box .map_layer1 {position:absolute;left:57px;top:0;*position:none;*margin:-235px 0 0 57px;height:218px;padding:9px 0 0 25px;width:617px;background:url(https://image.findall.co.kr/FAImage/job/advertiser/ad/bg_map_layer.png) no-repeat 0 0}
+.tblst td .map_box .map_layer1 strong {display:inline-block;width:290px;padding:3px 0 0 20px;letter-spacing:-1px;color:#00ffff;background:url(https://image.findall.co.kr/FAImage/job/advertiser/common/ico_chk.gif) no-repeat 0 3px}
+.tblst td .map_layer1 .txt_map {display:inline;padding:1px 0 0 17px;letter-spacing:-1px;color:#c9cdd3;font-size:11px;background:url(https://image.findall.co.kr/FAImage/job/advertiser/common/ico_caution4.gif) no-repeat 0 0;*background-position:0 6px}
+.tblst td .map_layer1 .txt_map a {vertical-align:top}
+.tblst td .map_box .map_layer2{position:absolute;left:1px;top:1px;*position:none;*margin:-234px 0 0 1px;padding:53px 0 0 69px;width:619px;height:174px;background:url(https://image.findall.co.kr/FAImage/job/advertiser/ad/bg_map_layer2.png) no-repeat -18px 0}
+.tblst td .map_layer2 strong {display:block;margin-left:1px}
+.tblst td .map_layer2 p {margin-top:16px;line-height:20px;color:#333}
+.tblst td .map_layer2 .txt_map {margin:19px 0 0 1px;padding:0 0 0 16px;letter-spacing:-1px;color:#316fd4;font-size:11px;background:url(https://image.findall.co.kr/FAImage/job/advertiser/common/ico_caution5.gif) no-repeat 0 3px}
+.tblst td .nmap_layer{background:url(https://image.findall.co.kr/FACache/member/content/bg_map_layer3.png) no-repeat -18px 0 !important}
+.tblst.v1{border-top:2px solid #616f81}
+
+.tblst2{clear:both;padding:14px 0 20px;border-width:2px 1px 1px;border-style:solid;border-color:#6f7e91 #c1c1c1 #c1c1c1;background:#f5f5f5}
+.tblst2 th, .tblst2 td{padding-top:6px;font-size:15px}
+.tblst2 th{text-align:left;font-weight:normal}
+.tblst2 th > div{margin-left:40px}
+.tblst2 th .icn_bu{margin:4px 5px 0 0}
+
+/* 2015-10-05 이벤트 */
+.first_buy {width:730px; height:240px; margin:0 auto; background-color:#fff; position:relative}
+.first_buy .inner {width:730px; height:240px; background:url('http://image.findall.co.kr/FACache/Job/Event/2015/1005/regok_img3.png')}
+.first_buy .inner .youknow {position:absolute; left:327px; top:26px}
+.first_buy .inner .youknow .name {padding-top:3px; font-family:Malgun Gothic; font-size:26px; font-weight:bold; color:#fbdd24; letter-spacing:-3px; display:inline-block; *display:inline; vertical-align:top}
+.first_buy .inner .coupon {position:absolute; left:512px; top:183px}
+
+/* 2016-06-03 배너교체 */
+.first_buy .inner {width:730px; height:240px; background:url('http://image.findall.co.kr/FACache/event/coupon/regok_img3.png')}

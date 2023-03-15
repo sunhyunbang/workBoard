@@ -9,5 +9,6 @@ module.exports = defineConfig({
         changeOrigin: true // cross origin 허용
       }
     }
-  }
+  },
+  lintOnSave: false, // false => 단일 name 컴포넌트 사용 가능
 })
