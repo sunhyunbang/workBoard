@@ -104,7 +104,7 @@ ex) default.vue - 기본 레이아웃
 ### node_modules
 
 ```js
-└ 📁 node_modules
+└ 📁 node_modules 
 ```
 
 Nuxt 프로젝트에서 사용하는 모듈 라이브러리를 모아놓은 폴더이다.
