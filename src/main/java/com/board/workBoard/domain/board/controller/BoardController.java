@@ -1,4 +1,4 @@
-package com.board.workBoard.domain.controller;
+package com.board.workBoard.domain.board.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
