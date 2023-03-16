@@ -4,8 +4,8 @@
     <div class="wrap_login">
       <h1 class="tit">파인드올 관리자 로그인</h1>
       <div class="inner">
-        <div class="inp"><label for="txtAdminId" class="lab"></label><input TabIndex="2" type="text" id="txtAdminId" name="txtAdminId" size="16" maxlength="30" class="inp_txt" placeholder="아이디"></div>
-        <div class="inp"><label for="txtAdminPassword" class="lab"></label><input TabIndex="3" type="password" id="txtAdminPassword" name="txtAdminPassword" size="16" maxlength="30" class="inp_txt" placeholder="비밀번호"></div>
+        <div class="inp"><label for="userId" class="lab"></label><input TabIndex="2" type="text" id="userId" name="userId" size="16" maxlength="30" class="inp_txt" placeholder="아이디"></div>
+        <div class="inp"><label for="userPw" class="lab"></label><input TabIndex="3" type="password" id="userPw" name="userPw" size="16" maxlength="30" class="inp_txt" placeholder="비밀번호"></div>
 <!--        <div class="inp"><label for="txtAdminPassword" class="lab">비밀번호</label><input TabIndex="3" type="password" id="txtAdminPassword" name="txtAdminPassword" size="16" maxlength="30" class="inp_txt" onkeypress="fn_EnterKey();"></div>-->
         <div class="box_btn">
           <input TabIndex="4" type="button" value="로그인" border="0"  id="image1" name="image1" class="btn"/>
