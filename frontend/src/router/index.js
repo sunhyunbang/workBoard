@@ -19,6 +19,12 @@ const routes = [
     // component: () =>
     //   import("../views/sample/Scomponent.vue"),
   },
+  {
+    path: "/board",
+    name: "board",
+    component: () =>
+      import("../views/BoardView.vue"),
+  },
 ];
 
 const router = createRouter({
