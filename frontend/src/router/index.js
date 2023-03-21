@@ -25,6 +25,12 @@ const routes = [
     component: () =>
       import("../views/BoardView.vue"),
   },
+  {
+    path: "/boardWrite",
+    name: "boardWrite",
+    component: () =>
+      import("../views/BoardWriteView.vue"),
+  },
 ];
 
 const router = createRouter({

@@ -1,19 +1,20 @@
 package com.board.workBoard.domain.sample.board.Controller;
 
-import com.board.workBoard.domain.sample.board.Dto.BoardRequestDto;
-import com.board.workBoard.domain.sample.board.Dto.BoardResponseDto;
-import com.board.workBoard.domain.sample.board.Service.BoardService;
+import com.board.workBoard.domain.sample.board.Dto.BoardSampleRequestDto;
+import com.board.workBoard.domain.sample.board.Service.BoardSampleService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 
 @RestController
+@Slf4j
+@RequiredArgsConstructor
 public class BoardSampleController {
-  private BoardService boardService;
+
+  private final BoardSampleService boardSampleService;
 
   @GetMapping("/api/sample/boardList")
   public HashMap<String , Object> getBoardList(@RequestParam(defaultValue = "0" ,required = false) int page
@@ -21,15 +22,25 @@ public class BoardSampleController {
           , Model model) throws Exception {
     HashMap<String, Object> resultMap = null;
     try {
-      resultMap = boardService.findAll(page, size);
+      resultMap = boardSampleService.findAll(page, size);
     } catch (Exception e) {
       e.printStackTrace();
     }
     return resultMap;
   }
 
+  @GetMapping("/api/sample/boardList1")
+  public String getStringBoardList() throws Exception {
+    return "vue js";
+  }
+
   @PostMapping("/api/sample/saveBoard")
-  public void saveBoard(BoardRequestDto boardRequestDto) throws Exception {
-    boardService.boardSave(boardRequestDto);
+  public String saveBoard(@RequestBody BoardSampleRequestDto boardSampleRequestDto) throws Exception {
+//    log.info("saveBoard77777777777777777 : "+boardSampleRequestDto.getTitle());
+//    log.info("saveBoard77777777777777777 : "+boardSampleRequestDto.getContent());
+//    log.info("saveBoard77777777777777777 : "+boardSampleRequestDto.getRegisterId());
+
+    boardSampleService.boardSave(boardSampleRequestDto);
+    return "save";
   }
 }

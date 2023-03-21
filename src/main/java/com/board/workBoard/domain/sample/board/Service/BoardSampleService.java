@@ -1,10 +1,11 @@
 package com.board.workBoard.domain.sample.board.Service;
 
-import com.board.workBoard.domain.sample.board.Dto.BoardRequestDto;
-import com.board.workBoard.domain.sample.board.Dto.BoardResponseDto;
-import com.board.workBoard.domain.sample.board.Entity.Board;
-import com.board.workBoard.domain.sample.board.Repository.BoardRepository;
+import com.board.workBoard.domain.sample.board.Dto.BoardSampleRequestDto;
+import com.board.workBoard.domain.sample.board.Dto.BoardSampleResponseDto;
+import com.board.workBoard.domain.sample.board.Entity.BoardSample;
+import com.board.workBoard.domain.sample.board.Repository.BoardSampleRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -16,18 +17,18 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class BoardService {
+@Slf4j
+public class BoardSampleService {
 
-  private BoardRepository boardRepository;
+  private final BoardSampleRepository boardSampleRepository;
 
   @Transactional
   public HashMap<String , Object> findAll(Integer page , Integer size)throws Exception{
 
+    Page<BoardSample> list =  boardSampleRepository.findAll(PageRequest.of(page, size , Sort.by(Sort.Direction.DESC , "id")));
 
     HashMap<String , Object> resultMap = new HashMap<String , Object>();
-    Page<Board> list =  boardRepository.findAll(PageRequest.of(size , page , Sort.by(Sort.Direction.DESC , "id")));
-
-    resultMap.put("list" , list.stream().map(BoardResponseDto::new).collect(Collectors.toList()));
+    resultMap.put("list", list.stream().map(BoardSampleResponseDto::new).collect(Collectors.toList()));
     resultMap.put("page" , list.getPageable());
     resultMap.put("size", list.getSize());
     resultMap.put("totalPage", list.getTotalPages());
@@ -37,7 +38,8 @@ public class BoardService {
   }
 
   @Transactional
-  public void boardSave(BoardRequestDto boardRequestDto)throws Exception{
-    boardRepository.save(boardRequestDto.ToEntity());
+  public void boardSave(BoardSampleRequestDto boardSampleRequestDto)throws Exception{
+
+    boardSampleRepository.save(boardSampleRequestDto.ToEntity());
   }
 }

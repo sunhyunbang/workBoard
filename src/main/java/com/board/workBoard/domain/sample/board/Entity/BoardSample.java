@@ -10,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
-public class Board {
+public class BoardSample {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -22,7 +22,7 @@ public class Board {
 
 
   @Builder
-  public Board(Long id, String title, String content, int readCnt, String registerId){
+  public BoardSample(Long id, String title, String content, int readCnt, String registerId){
     this.id = id;
     this.title = title;
     this.content = content;
