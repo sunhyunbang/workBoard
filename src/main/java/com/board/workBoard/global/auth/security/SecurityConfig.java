@@ -84,7 +84,7 @@ public class SecurityConfig {
                 // 조건별 요청 허용/제한 설정
                 .authorizeRequests()
                 .antMatchers("/","/**").permitAll()
-                .antMatchers("/register", "/login").permitAll()
+                .antMatchers("/api/register", "/api/login").permitAll()
                 .antMatchers(PERMIT_LIST).permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user/**").hasRole("USER")
