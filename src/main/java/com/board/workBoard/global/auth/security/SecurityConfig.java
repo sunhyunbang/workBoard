@@ -48,6 +48,7 @@ public class SecurityConfig {
             "/webjars/**",
             /* swagger v3 */
             "/v3/api-docs/**",
+            "/api-docs/**",
             "/swagger-ui/**",
             "/swagger-ui.html",
             /* resources & vue */
@@ -83,11 +84,12 @@ public class SecurityConfig {
                 .and()
                 // 조건별 요청 허용/제한 설정
                 .authorizeRequests()
-                .antMatchers("/","/**").permitAll()
+//                .antMatchers("/","/**").permitAll()
                 .antMatchers("/api/register", "/api/login").permitAll()
                 .antMatchers(PERMIT_LIST).permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasRole("USER")
+                .antMatchers("/api/user/**", "/api/admin/**").hasAnyRole("USER", "ADMIN")
+//                .antMatchers("/admin/**").hasRole("ADMIN")
+//                .antMatchers("/user/**").hasRole("USER")
                 .anyRequest().denyAll()
                 .and()
                 .addFilterBefore(new JwtAuthenticationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class)

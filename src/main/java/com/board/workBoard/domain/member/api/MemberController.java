@@ -24,9 +24,18 @@ public class MemberController {
     @Operation(summary = "회원 로그인", description = "회원 아이디와 패스워드를 통해 로그인 한다.")
     @PostMapping("/login")
     public ResponseEntity<SignResponse> signin(
-            @RequestBody SignRequest request) throws Exception {
+            @RequestParam(value = "account") String account,
+            @RequestParam(value = "password") String password,
+            @Parameter(hidden = true) SignRequest request
+            ) throws Exception {
+        request.setAccount(account);
+        request.setPassword(password);
         return new ResponseEntity<>(memberService.login(request), HttpStatus.OK);
     }
+//    public ResponseEntity<SignResponse> signin(
+//            @RequestBody SignRequest request) throws Exception {
+//        return new ResponseEntity<>(memberService.login(request), HttpStatus.OK);
+//    }
 
     @Operation(summary = "회원가입", description = "회원 가입을 한다.")
     @PostMapping("/register")
