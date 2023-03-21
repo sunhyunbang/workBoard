@@ -37,7 +37,7 @@ import java.util.List;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private static final String[] PERMIT_URL_ARRAY = {
+    private static final String[] PERMIT_LIST = {
             /* swagger v2 */
             "/v2/api-docs",
             "/swagger-resources",
@@ -48,18 +48,25 @@ public class SecurityConfig {
             "/webjars/**",
             /* swagger v3 */
             "/v3/api-docs/**",
-            "/swagger-ui/**"
+            "/swagger-ui/**",
+            "/swagger-ui.html",
+            /* resources & vue */
+            "/static/**",
+            "/js/**",
+            "/css/**",
+            "/favicon.ico"
     };
 
     private final JwtProvider jwtProvider;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        // 권한 문제 발생 시 아래 핸들러 호출
         http
-                .httpBasic().disable()
-                .csrf().disable()
+                .httpBasic().disable() // id, password 문자열을 Base64로 인코딩 후 전달
+                .csrf().disable() // 쿠키가 아닌 JWT 기반이므로 disable
                 .cors(c -> {
-                    CorsConfigurationSource source = request -> {
+                    CorsConfigurationSource source = request -> { // cors 허용 패턴
                         CorsConfiguration config = new CorsConfiguration();
                         config.setAllowedOrigins(
                                 List.of("*")
@@ -71,35 +78,31 @@ public class SecurityConfig {
                     };
                     c.configurationSource(source);
                 })
+                // 세션을 생성 및 사용하지 않음
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+                // 조건별 요청 허용/제한 설정
                 .authorizeRequests()
                 .antMatchers("/","/**").permitAll()
                 .antMatchers("/register", "/login").permitAll()
-                .antMatchers(PERMIT_URL_ARRAY).permitAll()
+                .antMatchers(PERMIT_LIST).permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user/**").hasRole("USER")
                 .anyRequest().denyAll()
                 .and()
                 .addFilterBefore(new JwtAuthenticationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class)
-                .exceptionHandling()
-                .accessDeniedHandler(new AccessDeniedHandler() {
-                    @Override
-                    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
-                        response.setStatus(403);
-                        response.setCharacterEncoding("utf-8");
-                        response.setContentType("text/html; charset=UTF-8");
-                        response.getWriter().write("권한이 없는 사용자입니다.");
-                    }
+                .exceptionHandling() // 에러 핸들링
+                .accessDeniedHandler((request, response, accessDeniedException) -> {
+                    response.setStatus(403);
+                    response.setCharacterEncoding("utf-8");
+                    response.setContentType("text/html; charset=UTF-8");
+                    response.getWriter().write("권한이 없는 사용자입니다.");
                 })
-                .authenticationEntryPoint(new AuthenticationEntryPoint() {
-                    @Override
-                    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-                        response.setStatus(401);
-                        response.setCharacterEncoding("utf-8");
-                        response.setContentType("text/html; charset=UTF-8");
-                        response.getWriter().write("인증되지 않은 사용자입니다.");
-                    }
+                .authenticationEntryPoint((request, response, authException) -> {
+                    response.setStatus(401);
+                    response.setCharacterEncoding("utf-8");
+                    response.setContentType("text/html; charset=UTF-8");
+                    response.getWriter().write("인증되지 않은 사용자입니다.");
                 });
 
         return http.build();
@@ -112,7 +115,7 @@ public class SecurityConfig {
 
     public void confiure(WebSecurity web){
         web.ignoring()
-                .antMatchers(PERMIT_URL_ARRAY);
+                .antMatchers(PERMIT_LIST);
     }
 
     /*public void addInterceptor(InterceptorRegistry registry){
