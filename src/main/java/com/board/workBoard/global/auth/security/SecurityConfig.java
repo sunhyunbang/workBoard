@@ -3,10 +3,13 @@ package com.board.workBoard.global.auth.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.client.support.BasicAuthenticationInterceptor;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -18,6 +21,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.ServletException;
@@ -70,8 +74,9 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
+                .antMatchers("/","/**").permitAll()
                 .antMatchers("/register", "/login").permitAll()
-//                .antMatchers(PERMIT_URL_ARRAY).permitAll()
+                .antMatchers(PERMIT_URL_ARRAY).permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user/**").hasRole("USER")
                 .anyRequest().denyAll()
@@ -105,6 +110,17 @@ public class SecurityConfig {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
+    public void confiure(WebSecurity web){
+        web.ignoring()
+                .antMatchers(PERMIT_URL_ARRAY);
+    }
+
+    /*public void addInterceptor(InterceptorRegistry registry){
+        registry.addInterceptor()
+                .excludePathPatterns("/swagger/**")
+                .excludePathPatterns("/swagger-ui.html")
+                .excludePathPatterns("/v2/api-docs");
+    }*/
 
 
 
