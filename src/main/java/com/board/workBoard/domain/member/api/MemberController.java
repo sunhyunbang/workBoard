@@ -56,4 +56,9 @@ public class MemberController {
             @Parameter(name = "account", description = "관리자 아이디") String account) throws Exception {
         return new ResponseEntity<>(memberService.getMember(account), HttpStatus.OK);
     }
+
+    @GetMapping("/sample")
+    public String test() {
+        return "sampleData";
+    }
 }

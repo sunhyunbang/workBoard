@@ -55,7 +55,9 @@ public class SecurityConfig {
             "/static/**",
             "/js/**",
             "/css/**",
-            "/favicon.ico"
+            "/favicon.ico",
+            /* TEST */
+            "/api/sample"
     };
 
     private final JwtProvider jwtProvider;
@@ -85,7 +87,7 @@ public class SecurityConfig {
                 // 조건별 요청 허용/제한 설정
                 .authorizeRequests()
 //                .antMatchers("/","/**").permitAll()
-                .antMatchers("/api/register", "/api/login").permitAll()
+                .antMatchers("/api/register", "/api/login", "/login").permitAll()
                 .antMatchers(PERMIT_LIST).permitAll()
                 .antMatchers("/api/user/**", "/api/admin/**").hasAnyRole("USER", "ADMIN")
 //                .antMatchers("/admin/**").hasRole("ADMIN")

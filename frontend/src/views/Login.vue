@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
 
 export default {
   name: "Login",
@@ -57,19 +56,33 @@ export default {
   // created() {},
   // beforeMount() {},
   // mounted() {},
+  computed: {
+    users() {
+      // console.log(this.$store.state.index.account)
+
+    },
+  },
   methods: {
     async login() {
       let params = {
         account: "test123",
         password: "password"
       };
+      // this.users;
+      // this.$store.dispatch("account/getAccount", params)
+      this.$axios.get("/api/sample").then((res) => {
+        console.log("res => ",res)
+      }
+      )
+
+
+      let a = this.$store.dispatch("account/getSample")
 
       // this.$axios.post("/api/login", params).then((res) => {
       //   console.log("res =>> ", res)
       // })
-    this.$store.dispatch("", params)
+    // this.$store.dispatch("", params)
 
-      console.log("TEST=========================")
     }
   },
 }

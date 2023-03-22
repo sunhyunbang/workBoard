@@ -1,12 +1,16 @@
 // variable
 export const state = () => ({
-    auth: {},
+    account: {
+        id: 'test',
+        pw: 'password'
+    }
+
 });
 
 // variable save
 export const mutations = {
-    setAuth(state, data) {
-        state.auth = data;
+    setAccount(state, data) {
+        state.account = data;
     }
 };
 
@@ -20,3 +24,5 @@ export const actions = {
             });
     }
 };
+export default class account {
+}
