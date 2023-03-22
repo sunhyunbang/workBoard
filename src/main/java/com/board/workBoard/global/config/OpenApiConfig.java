@@ -51,9 +51,9 @@ public class OpenApiConfig {
         SecurityRequirement securityRequirement = new SecurityRequirement().addList("bearerAuth");
 
         return new OpenAPI()
-                .components(new Components().addSecuritySchemes("bearer", securityScheme))
+                .components(new Components().addSecuritySchemes("bearerAuth", securityScheme))
                 .security(Arrays.asList(securityRequirement))
-                .info(info)
-                .servers(servers);
+                .info(info);
+                //.servers(servers);
     }
 }
