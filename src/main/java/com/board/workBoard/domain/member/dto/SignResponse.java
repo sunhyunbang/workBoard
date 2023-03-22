@@ -21,16 +21,16 @@ public class SignResponse {
     @Schema(description = " 회원 번호")
     private Long id;
 
-    @Schema(description = "회원 ID", example = "test")
+    @Schema(description = "회원 ID")
     private String account;
 
-    @Schema(description = "회원 닉네임", example = "개발1팀")
+    @Schema(description = "회원 닉네임")
     private String nickname;
 
-    @Schema(description = "회원 이름", example = "홍길동")
+    @Schema(description = "회원 이름")
     private String name;
 
-    @Schema(description = "회원 이메일", example = "test@mediawill.com")
+    @Schema(description = "회원 이메일")
     private String email;
 
     @Schema(description = "회원 권한", hidden = true)

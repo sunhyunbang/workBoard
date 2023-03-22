@@ -15,25 +15,25 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
-@Tag(name = "MemberController", description = "회원 API")
+@Tag(name = "Member", description = "회원 API")
 public class MemberController {
 
-    private final MemberRepository memberRepository;
     private final MemberService memberService;
 
     @Operation(summary = "회원 로그인", description = "회원 아이디와 패스워드를 통해 로그인 한다.")
     @PostMapping("/login")
     public ResponseEntity<SignResponse> signin(
-            @RequestParam(value = "account") String account,
-            @RequestParam(value = "password") String password,
-            @Parameter(hidden = true) SignRequest request
-            ) throws Exception {
-        request.setAccount(account);
-        request.setPassword(password);
+            @RequestBody SignRequest request) throws Exception {
         return new ResponseEntity<>(memberService.login(request), HttpStatus.OK);
     }
-//    public ResponseEntity<SignResponse> signin(
-//            @RequestBody SignRequest request) throws Exception {
+    //    public ResponseEntity<SignResponse> signin(
+//            @Parameter()
+//            @RequestParam(value = "account") String account,
+//            @RequestParam(value = "password") String password,
+//            @Parameter(hidden = true) SignRequest request
+//            ) throws Exception {
+//        request.setAccount(account);
+//        request.setPassword(password);
 //        return new ResponseEntity<>(memberService.login(request), HttpStatus.OK);
 //    }
 
@@ -46,14 +46,14 @@ public class MemberController {
     @Operation(summary = "회원 정보 조회", description = "회원 정보를 조회한다.")
     @GetMapping("/user/get")
     public ResponseEntity<SignResponse> getUser(
-            @Parameter(name = "account", description = "회원 아이디") @RequestParam String account) throws Exception {
+            @Parameter(name = "account", description = "회원 아이디") String account) throws Exception {
         return new ResponseEntity<>(memberService.getMember(account), HttpStatus.OK);
     }
 
     @Operation(summary = "관리자 정보 조회", description = "관리자 정보를 조회한다.")
     @GetMapping("/admin/get")
     public ResponseEntity<SignResponse> getUserForAdmin(
-            @Parameter(name = "account", description = "관리자 아이디") @RequestParam String account) throws Exception {
+            @Parameter(name = "account", description = "관리자 아이디") String account) throws Exception {
         return new ResponseEntity<>(memberService.getMember(account), HttpStatus.OK);
     }
 }
