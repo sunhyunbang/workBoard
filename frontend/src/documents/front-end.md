@@ -284,9 +284,9 @@ export default {
     async asyncData({}) {},
     beforeCreate(),
     created(),
-    beforeMount(),
-    mounted(),
+    beforeMount() {},
+    mounted() {},
     // method
-    methods(),
+    methods: {},
 }
 ```
