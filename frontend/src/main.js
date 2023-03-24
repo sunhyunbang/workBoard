@@ -3,7 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import emit from "mitt";
-import axios from "axios"; // npm install --save axios
+import axios from './plugins/axios';
+// import VueCompositionApi from '@vue/composition-api';
+//import axios from "axios"; // npm install --save axios
 
 
 // [앱 생성]
@@ -24,4 +26,5 @@ app.config.globalProperties.$axios = axios;
 app.use(router);
 app.use(store);
 app.use(emit);
+// app.use(VueCompositionApi);
 app.mount("#app");

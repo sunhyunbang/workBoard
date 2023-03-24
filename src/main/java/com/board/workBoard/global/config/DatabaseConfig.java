@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 @Slf4j
 public class DatabaseConfig {
 
-    @Profile("local")
+//    @Profile("local")
     @Bean(name = "DataSource")
     public DataSource dataSource() {
         DataSourceBuilder<?> builder = DataSourceBuilder.create();

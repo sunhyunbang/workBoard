@@ -1,3 +1,5 @@
+import axios from '@/plugins/axios';
+
 export default ({
     namespaced: true,
     state: {
@@ -10,18 +12,18 @@ export default ({
     mutations: {},
     actions: {
         async getAccount({commit}, payload) {
-            console.log("접근")
-            return await this.$axios
+            return await axios
                 .post("/api/login", payload)
                 .then((response) => {
                     return response.data;
                 });
         },
-
-        async getSample({commit}) {
-            return await this.$axios.get("/api/sample").then((response) => {
-                return response.data;
-            })
-        }
+        getSample({commit}) {
+            return axios
+                .get("/api/sample")
+                .then((response) => {
+                    return response.data;
+                })
+        },
     },
 });
