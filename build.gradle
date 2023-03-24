@@ -56,6 +56,7 @@ dependencies {
 	//implementation 'io.springfox:springfox-boot-starter:3.0.0'
 	//implementation 'io.springfox:springfox-swagger-ui:3.0.0'
     // maria db driver
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
     implementation 'org.mariadb.jdbc:mariadb-java-client'
     // thymeleaf
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'

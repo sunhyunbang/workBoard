@@ -1,5 +1,6 @@
 package com.board.workBoard.domain.member.application;
 
+import com.board.workBoard.domain.member.dao.MemberMapper;
 import com.board.workBoard.domain.member.dao.MemberRepository;
 import com.board.workBoard.domain.member.domain.Authority;
 import com.board.workBoard.domain.member.domain.Member;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -23,6 +25,7 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
+    private final MemberMapper memberMapper;
 
     public SignResponse login(SignRequest request) throws Exception {
         Member member = memberRepository.findByAccount(request.getAccount()).orElseThrow(() -> new BadCredentialsException("잘못된 계정정보입니다."));
@@ -67,4 +70,10 @@ public class MemberService {
                 .orElseThrow(() -> new Exception("계정을 찾을 수 없습니다."));
         return new SignResponse(member);
     }
+
+    public List getMemberList() throws Exception {
+        List<Map<String, String>> resultList = memberMapper.getMemberList();
+        return resultList;
+    }
+
 }
