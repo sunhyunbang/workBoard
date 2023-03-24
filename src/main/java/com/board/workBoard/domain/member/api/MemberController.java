@@ -12,6 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
@@ -35,6 +38,7 @@ public class MemberController {
 //        request.setAccount(account);
 //        request.setPassword(password);
 //        return new ResponseEntity<>(memberService.login(request), HttpStatus.OK);
+
 //    }
 
     @Operation(summary = "회원가입", description = "회원 가입을 한다.")
@@ -58,7 +62,11 @@ public class MemberController {
     }
 
     @GetMapping("/sample")
-    public String test() {
-        return "sampleData";
+    public void test() throws Exception {
+        List<Map<String, String>> resultList = memberService.getMemberList();
+        resultList.forEach(x -> {
+            System.out.println(x);
+        });
+        //return "sampleData";
     }
 }
