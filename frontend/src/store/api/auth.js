@@ -20,7 +20,7 @@ export default ({
         },
         getSample({commit}) {
             return axios
-                .get("/api/sample")
+                .get("/api/getSample")
                 .then((response) => {
                     return response.data;
                 })

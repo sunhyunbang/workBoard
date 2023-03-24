@@ -69,4 +69,9 @@ public class MemberController {
         });
         //return "sampleData";
     }
+
+    @GetMapping("/getSample")
+    public String getSample() throws Exception {
+        return "데이터 정상적으로 가져옴";
+    }
 }
