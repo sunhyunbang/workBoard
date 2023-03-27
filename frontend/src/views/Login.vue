@@ -1,21 +1,16 @@
 <script setup>
-import {ref, computed} from 'vue';
-import {useStore} from 'vuex';
+import {ref, computed} from 'vue'
+import {useStore} from 'vuex'
+import router from "@/router"
 
 const store = useStore()
 
 // const acc = store.state.auth.account
 
 // const sample = await store.dispatch("auth/getSample")
-let userId = ref("test")
-let userPw = ref("password")
+let userId = ref("")
+let userPw = ref("")
 
-/*let cnt1 = ref(0)
-let cnt2 = 0
-function test() {
-  cnt1.value += 1
-  cnt2 += 1
-}*/
 const login = async () => {
   try {
     if (!!!userId.value) {
@@ -32,7 +27,8 @@ const login = async () => {
       password : userPw.value
     }
     await store.dispatch("auth/login", payload)
-    const member = store.state.auth.member
+    // 로그인 성공 시 메인화면으로 이동
+    await router.push("/")
   } catch (e) {
     alert(e.response.data)
   }
@@ -84,7 +80,9 @@ const getAdmin = async () => {
         </div>
         <div class="box_btn">
           <input type="button" value="로그인" class="btn"
-                 @click="login"/>
+                 @click="login"
+                 @keyup.enter="submit"
+          />
         </div>
         <table width="100%">
           <tr>
