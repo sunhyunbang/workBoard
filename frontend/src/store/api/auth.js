@@ -3,24 +3,64 @@ import axios from '@/plugins/axios';
 export default ({
     namespaced: true,
     state: {
-        account: {
-            id: "test123",
-            pw: "password"
-        }
+        // member: {
+        //     account: null,
+        //     nickname: null,
+        //     name: null,
+        //     email: null,
+        //     roles: {},
+        //     token: null,
+        // },
+        member: null,
     },
     getters: {},
-    mutations: {},
+    mutations: {
+        setMember(state, data) {
+            state.member = data;
+            localStorage.setItem("member", JSON.stringify(data));
+            axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+        },
+
+        clearMember(state) {
+            state.member = null;
+            localStorage.removeItem("member");
+            axios.defaults.headers.common['Authorization'] = null;
+        }
+    },
     actions: {
-        async getAccount({commit}, payload) {
+        // 로그인
+        async login({commit}, payload) {
             return await axios
                 .post("/api/login", payload)
                 .then((response) => {
-                    return response.data;
+                    commit("setMember", response.data);
                 });
         },
-        getSample({commit}) {
-            return axios
-                .get("/api/getSample")
+        // 회원가입
+        async register({commit}, payload) {
+            return await axios
+                .post("/api/register", payload)
+                .then((response) => {
+                    return response.data;
+                })
+        },
+        // 로그아웃
+        logout({commit}) {
+            return commit("clearMember")
+        },
+        // 회원 정보 조회
+        async getUser({commit}, id) {
+            return await axios
+                .get(`/api/user/get?account=${id}`)
+                .then((response) => {
+                    return response.data;
+                })
+        },
+        // 관리자 정보 조회
+        // 관리자 정보 조회
+        async getAdmin({commit}, id) {
+            return await axios
+                .get(`/api/admin/get?account=${id}`)
                 .then((response) => {
                     return response.data;
                 })

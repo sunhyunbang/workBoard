@@ -56,8 +56,6 @@ public class SecurityConfig {
             "/js/**",
             "/css/**",
             "/favicon.ico",
-            /* TEST */
-            "/api/getSample"
     };
 
     private final JwtProvider jwtProvider;

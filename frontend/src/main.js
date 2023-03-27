@@ -4,6 +4,8 @@ import router from "./router";
 import store from "./store";
 import emit from "mitt";
 import axios from './plugins/axios';
+// import createPersistedState from '@/plugins/persistedState';
+// import persistedState from "@/plugins/persistedState";
 // import VueCompositionApi from '@vue/composition-api';
 //import axios from "axios"; // npm install --save axios
 
@@ -26,5 +28,6 @@ app.config.globalProperties.$axios = axios;
 app.use(router);
 app.use(store);
 app.use(emit);
+// app.use(persistedState);
 // app.use(VueCompositionApi);
 app.mount("#app");
