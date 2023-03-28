@@ -99,14 +99,14 @@ public class SecurityConfig {
                     response.setCharacterEncoding("utf-8");
                     response.setContentType("text/html; charset=UTF-8");
                     response.getWriter().write("권한이 없는 사용자입니다.");
-                    response.sendRedirect("/login");
+//                    response.sendRedirect("/login");
                 })
                 .authenticationEntryPoint((request, response, authException) -> {
                     response.setStatus(401);
                     response.setCharacterEncoding("utf-8");
                     response.setContentType("text/html; charset=UTF-8");
                     response.getWriter().write("인증되지 않은 사용자입니다.");
-                    response.sendRedirect("/login");
+//                    response.sendRedirect("/login");
                 });
 
         return http.build();
