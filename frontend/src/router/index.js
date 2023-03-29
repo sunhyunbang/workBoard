@@ -18,6 +18,11 @@ const routes = [
     // component: () =>
     //   import("../views/sample/Scomponent.vue"),
   },
+  {
+    path: "/board",
+    component: () =>
+      import("../views/Board/BoardList.vue"),
+  },
 ];
 
 const router = createRouter({
