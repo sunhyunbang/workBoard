@@ -1,91 +1,85 @@
 <script setup>
-import {ref, computed} from 'vue'
-import {useStore} from 'vuex'
-import router from "@/router"
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
+import router from "@/router";
+import axios from "@/plugins/axios";
 
-const store = useStore()
+const store = useStore();
+console.log("==============>>", axios.defaults.headers.common["Authorization"])
+const member = store.state.auth.member;
 
-const member = store.state.auth.member
-console.log(member.name)
+const links = ['Dashboard', 'Messages', 'Profile', 'Updates']
 </script>
 <template>
-  <div class="wrap">
-    <div class="mini_admin">
-      <a href="UserMod.asp">계정 정보 수정</a><a href="AdminPwChange.asp">관리자 비번변경</a><input type="button" value="로그아웃" class="button" OnClick="javascript:location.href='adminLogout.asp'">
-    </div>
-    <div class="wrap_admin_list">
-      <h1 class="tit"><strong>{{ member.name }}</strong>님, FA 관리자 접속을 환영합니다!</h1>
-      <div class="inner">
-        <dl class="list_dl">
-          <dt>오늘의 명언</dt>
-          <dd><!--<%=strGoodSay%>-->잘하자</dd>
-        </dl>
-        <h2>{{ member.name }}님 사용 가능 섹션</h2>
-        <table class="tbl">
-          <colgroup>
-            <col width="15%" />
-            <col width="46%" />
-            <col width="30%" />
-            <col width="15%" />
-          </colgroup>
-          <thead>
-          <tr>
-            <th>관리섹션</th>
-            <th>관리권한</th>
-            <th>마지막 접속 시간</th>
-            <th>관리자접속</th>
-          </tr>
-          </thead>
-          <tbody>
+  <v-app id="inspire">
+    <v-app-bar flat>
+      <v-container class="fill-height d-flex align-center">
+        <v-avatar
+            class="me-10 ms-4"
+            color="grey-darken-1"
+            size="32"
+        ></v-avatar>
 
-<!--          <%=str%>-->
+        <v-btn
+            v-for="link in links"
+            :key="link"
+            variant="text"
+        >
+          {{ link }}
+        </v-btn>
 
-<!--          <%-->
-<!--          's isms 승인 관련 파일업로드 승인관리 20190213, 개발팀만 접근-->
-<!--          Dim tempAdminID : tempAdminID = LCase(AdminID)-->
-<!--          Dim AccessAuthYN : AccessAuthYN = "N"-->
-<!--          If InStr(arrAuthYN_Dev, "," & tempAdminID & "," ) > 0 Then-->
-<!--          AccessAuthYN = "Y"-->
-<!--          End If-->
-<!--          %>-->
-<!--          <% If AccessAuthYN = "Y" Then %>-->
-          <tr>
-            <td>소스배포관리</td>
-            <td>소스배포관리</td>
-            <td>-</td>
-            <td><input type="button" value="접 속" Class="button"  style="line-height:150%;" ></td>
-          </tr>
-<!--          <%-->
-<!--          End If-->
-<!--          'e isms 승인 관련 파일업로드 승인관리-->
-<!--          %>-->
+        <v-spacer></v-spacer>
 
-<!--          <%-->
-<!--          '구벼부접근용 201910.16 권한 DB처리-->
-<!--          Dim LandAuthYN : LandAuthYN = "N"-->
-<!--          If InStr(arrAuthYN_Land, "," & tempAdminID & "," ) > 0 Then-->
-<!--          LandAuthYN = "Y"-->
-<!--          End If-->
-<!--          %>-->
-<!--          <% If LandAuthYN = "Y" Then %>-->
-          <tr>
-            <td>구벼룩시장</td>
-            <td>구벼룩시장</td>
-            <td>-</td>
-            <td><input type="button" value="접 속" Class="button"  style="line-height:150%;"></td>
-          </tr>
-<!--          <%-->
-<!--          End If-->
-<!--          '구벼부접근용-->
-<!--          %>-->
-          </tbody>
-        </table>
-        <ul class="list_dot">
-          <li>* 최종 접속일시 : <!--<%= f_loginDT %>--> </li>
-          <li>* 통합ID 접속센터: https://admin.findall.co.kr:444</li>
-          <li>* 문의사항 : 080-269-0011 / info@findall.co.kr</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+        <v-responsive max-width="260">
+          <v-text-field
+              density="compact"
+              hide-details
+              variant="solo"
+          ></v-text-field>
+        </v-responsive>
+      </v-container>
+    </v-app-bar>
+
+    <v-main class="bg-grey-lighten-3">
+      <v-container>
+        <v-row>
+          <v-col cols="2">
+            <v-sheet rounded="lg">
+              <v-list rounded="lg">
+                <v-list-item
+                    v-for="n in 5"
+                    :key="n"
+                    link
+                >
+                  <v-list-item-title>
+                    List Item {{ n }}
+                  </v-list-item-title>
+                </v-list-item>
+
+                <v-divider class="my-2"></v-divider>
+
+                <v-list-item
+                    link
+                    color="grey-lighten-4"
+                >
+                  <v-list-item-title>
+                    Refresh
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-sheet>
+          </v-col>
+
+          <v-col>
+            <v-sheet
+                min-height="70vh"
+                rounded="lg"
+            >
+              <!--  -->
+            </v-sheet>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>

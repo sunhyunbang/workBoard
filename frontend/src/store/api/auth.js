@@ -1,6 +1,6 @@
-import axios from '@/plugins/axios';
+import axios from "@/plugins/axios";
 
-export default ({
+export default {
     namespaced: true,
     state: {
         // member: {
@@ -18,43 +18,38 @@ export default ({
         setMember(state, data) {
             state.member = data;
             localStorage.setItem("member", JSON.stringify(data));
-            axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+            axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
         },
 
         clearMember(state) {
             state.member = null;
             localStorage.removeItem("member");
-            axios.defaults.headers.common['Authorization'] = null;
-        }
+            axios.defaults.headers.common["Authorization"] = null;
+        },
     },
     actions: {
         // 로그인
         async login({commit}, payload) {
-            return await axios
-                .post("/api/login", payload)
-                .then((response) => {
-                    commit("setMember", response.data);
-                });
+            return await axios.post("/api/login", payload).then((response) => {
+                commit("setMember", response.data);
+            });
         },
         // 회원가입
         async register({commit}, payload) {
-            return await axios
-                .post("/api/register", payload)
-                .then((response) => {
-                    return response.data;
-                })
+            console.log(payload)
+            return await axios.post("/api/register", payload).then((response) => {
+                return response.data;
+            });
         },
         // 로그아웃
         logout({commit}) {
-            return commit("clearMember")
+            return commit("clearMember");
         },
         // 회원 정보 조회
         async getUser({commit}, id) {
-            return await axios
-                .get(`/api/user/get?account=${id}`)
-                .then((response) => {
-                    return response.data;
-                })
+            return await axios.get(`/api/user/get?account=${id}`).then((response) => {
+                return response.data;
+            });
         },
         // 관리자 정보 조회
         // 관리자 정보 조회
@@ -63,7 +58,7 @@ export default ({
                 .get(`/api/admin/get?account=${id}`)
                 .then((response) => {
                     return response.data;
-                })
+                });
         },
     },
-});
+};
