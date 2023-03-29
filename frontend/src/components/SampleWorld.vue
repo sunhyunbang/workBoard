@@ -1,13 +1,9 @@
-<template>
-hello world?!!@
-</template>
+<template>hello world?!!@</template>
 
 <script>
 export default {
-  name: "SampleWorld"
-}
+  name: "SampleWorld",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
