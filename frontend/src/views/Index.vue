@@ -5,8 +5,14 @@ import router from "@/router";
 import axios from "@/plugins/axios";
 
 const store = useStore();
-console.log("==============>>", axios.defaults.headers.common["Authorization"]);
+
+const getUser = async() => {
+  store.dispatch("auth/getUser","snhyun").then(res => {console.log("getUser : " + res.account)})
+}
+
 const member = store.state.auth.member;
+
+console.log("Index Authorization : " + axios.defaults.headers.common["Authorization"])
 
 const links = ["Dashboard", "Messages", "Profile", "Updates"];
 </script>
@@ -15,7 +21,7 @@ const links = ["Dashboard", "Messages", "Profile", "Updates"];
     <v-app-bar flat>
       <v-container class="fill-height d-flex align-center">
         <v-avatar class="me-10 ms-4" color="grey-darken-1" size="32"></v-avatar>
-
+<v-btn @click="getUser">GETUSER</v-btn>
         <v-btn v-for="link in links" :key="link" variant="text">
           {{ link }}
         </v-btn>
