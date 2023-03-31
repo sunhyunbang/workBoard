@@ -5,8 +5,10 @@ import router from "@/router";
 import axios from "@/plugins/axios";
 
 const store = useStore();
-console.log("==============>>", axios.defaults.headers.common["Authorization"]);
+
 const member = store.state.auth.member;
+
+console.log("Index Authorization : " + axios.defaults.headers.common["Authorization"])
 
 const links = ["Dashboard", "Messages", "Profile", "Updates"];
 </script>
