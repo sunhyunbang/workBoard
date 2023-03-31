@@ -3,10 +3,11 @@ import axios from "axios";
 const instance = axios.create({
   withCredentials: true, // Header에 Authorization이 있을 경우 true 처리
 });
-let objMember = JSON.parse(localStorage.getItem("member"));
-const token = objMember.token;
-instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-//
+
+  let objMember = JSON.parse(localStorage.getItem("member"));
+  const token = objMember.token;
+  instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
 // instance.interceptors.request.use(
 //     function (config) {
 //       // config.baseURL = "http://localhost:3000";
