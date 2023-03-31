@@ -50,7 +50,7 @@ const login = async () => {
     await store.dispatch("auth/login", payload);
 
     // 로그인 성공 시 메인화면으로 이동
-    await router.push("/");
+    await router.push("/board");
   } catch (e) {
     alert(e.response.data);
   }

@@ -1,29 +1,36 @@
 <script setup>
 import {ref} from 'vue';
 import {useStore} from "vuex";
+import axios from "@/plugins/axios";
 
 const store = useStore();
 
-let userName = JSON.parse(localStorage.getItem("member"))
-// console.log("userName1 : " + localStorage.getItem("member"))
-// console.log("userName2 : " + JSON.parse(userName).name)
+let userName = JSON.parse(localStorage.getItem("member"));
+let member = axios.defaults.headers.common["Authorization"];
+
+console.log("headers Authorization : " + member);
 
 // let userName = ref('click');
 
-// const getUser = async () =>{
-//   try{
-//     store.dispatch("auth/getUser","snhyun82")
-//         .then((res) =>{
-//           console.log(res.data);
-//
-//           userName = res.data;
-//         })
-//   }catch (e) {
-//
-//   }
-// }
+const getUser = async () =>{
+  try{
+    store.dispatch("auth/getUser","snhyun")
+        .then((res) =>{
+          console.log(res.data);
+        })
+  }catch (e) {
 
+  }
+}
 
+const scopeLogOut = () => {
+  try {
+    store.dispatch("auth/logout")
+  }catch (e) {
+    console.log(e.response.data)
+  }
+
+}
 </script>
 <template>
   <div id="header">
@@ -46,11 +53,12 @@ let userName = JSON.parse(localStorage.getItem("member"))
       <ul class="list_mini_serve">
         <li>
           <div class="box_btn">
-            <button type="button" class="btn_alarm"><span class="txt">{{ userName.name }}</span></button>
+            <button type="button" class="btn_alarm" @click="getUser"><span class="txt">{{ userName.name }}</span></button>
           </div>
         </li>
         <li>
-          <a href="/AdminLogout.asp" class="btn_login"><span class="txt">로그아웃</span></a>
+<!--          <a :href="store.commit('clearMember')" class="btn_login"><span class="txt">로그아웃</span></a>-->
+          <button type="button" @click ="scopeLogOut" class="txt">LogOut</button>
         </li>
         <li>
           <a href="Template.asp?BoardIDX=5" class="btn_login" target="_blank"><span class="txt">템플릿 등록</span></a>

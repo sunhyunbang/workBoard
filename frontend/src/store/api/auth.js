@@ -1,4 +1,6 @@
 import axios from "@/plugins/axios";
+import {store} from "core-js/internals/reflect-metadata";
+import router from "@/router";
 
 export default {
   namespaced: true,
@@ -25,6 +27,7 @@ export default {
       state.member = null;
       localStorage.removeItem("member");
       axios.defaults.headers.common["Authorization"] = null;
+      router.push("/login").catch(error => {});
     },
   },
   actions: {
