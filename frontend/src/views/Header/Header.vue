@@ -16,7 +16,7 @@ const getUser = async () =>{
   try{
     store.dispatch("auth/getUser","snhyun")
         .then((res) =>{
-          console.log(res.data);
+          console.log(res.name);
         })
   }catch (e) {
 
