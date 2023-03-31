@@ -6,7 +6,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
     function (config) {
-      config.baseURL = "http://localhost:3000";
+      // config.baseURL = "http://localhost:3000";
       config.timeout = 60000;
 
         let objMember = JSON.parse(localStorage.getItem("member"));
@@ -16,13 +16,8 @@ instance.interceptors.request.use(
       if(token !== null | token !== "" || token !== "undefined"){
         config.headers.Authorization = `Bearer ${token}`;
       }
-      axios.defaults.headers.common["Cache-Control"] = "no-cache";
-      axios.defaults.headers.common["Pragma"] = "no-cache";
-      axios.defaults.headers.common["Expires"] = "0";
-
-      axios.defaults.headers.common["Content-Type"] = "application/json;";
-      axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
-      axios.defaults.headers.common["Access-Control-Allow-Methods"] = "GET , PUT , POST , DELETE , PATCH , OPTION";
+      config.headers["Access-Control-Allow-Origin"] = "*";
+      config.headers["Access-Control-Allow-Methods"] = "GET , PUT , POST , DELETE , PATCH , OPTION";
 
       config.responseEncoding = "utf8";
       return config;
