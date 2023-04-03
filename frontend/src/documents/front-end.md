@@ -2,22 +2,21 @@
 
 - [Front-end 개발 가이드](#front-end-개발-가이드)
     - [기본 세팅](#기본-세팅)
-    - [1. NuxtJS Project 디렉토리 구조](#1-nuxtjs-project-디렉토리-구조)
-        - [assets](#assets)
-        - [components](#components)
-        - [documents](#documents)
-        - [layouts](#layouts)
-        - [node\_modules](#node_modules)
-        - [pages](#pages)
-        - [plugins](#plugins)
-        - [mixins](#mixins)
-        - [static](#static)
-        - [store](#store)
-        - [nuxt.config.js](#nuxtconfigjs)
+    - [1. VueJS3.xx Project 디렉토리 구조](#1-vuejs-project-디렉토리-구조)
+    - [node\_modules](#node_modules)
+    - [assets](#assets)
+    - [components](#components)
+    - [documents](#documents)
+    - [plugins](#plugins)
+    - [router](#router)
+    - [store](#store)
+    - [layouts](#layouts)
+    - [views](#views)
+    - [mixins](#mixins)
+    - [vue.config.js](#vueconfigjs)
     - [2. Store Vuex](#2-store-vuex)
     - [3. 공통 가이드](#3-공통-가이드)
-
-<small><i><a color="grey" href='http://ecotrust-canada.github.io/markdown-toc/'>generated with markdown-toc</a></i></small>
+    
 
 ## 기본 세팅
 
@@ -32,7 +31,7 @@
   > 3. 없음 -> Prettier 로 설정 저장
   > 4. 파일 작성후 `Shift + Alt + F` 누르면 자동 포맷팅 됨
 
-## 1. NuxtJS Project 디렉토리 구조
+## 1. VueJS Project 디렉토리 구조
 
 ```js
 └ 📁 assets
@@ -44,8 +43,8 @@
 └ 📁 plugins
 └ 📁 mixins
 └ 📁 static
-└ 📁 store
-└ nuxt.config.js
+└ 📁 router
+└ vue.config.js
 ```
 
 ### assets
@@ -107,10 +106,10 @@ ex) default.vue - 기본 레이아웃
 └ 📁 node_modules 
 ```
 
-Nuxt 프로젝트에서 사용하는 모듈 라이브러리를 모아놓은 폴더이다.
+Vue 프로젝트에서 사용하는 모듈 라이브러리를 모아놓은 폴더이다.
 build, 모듈 add시 변경됨.
 
-### pages
+### views
 
 ```js
 └ 📁 pages // kebab-case 사용
@@ -137,9 +136,15 @@ ex) /pages/sample/main.vue -> http://{domain}/sample/main
 
 plugins 디렉토리에는 Vue.js 애플리케이션을 인스턴스화하기 전에 실행하려는 Javascript 플러그인이 포함되어 있습니다.  
 모든 페이지에서 사용하는 공통 컴포넌트, 공통 함수들을 정의한다.  
-파일 작성 후 `nuxt.config.js` plugins 옵션에 설정 추가
+파일 작성 후 `vue.config.js` plugins 옵션에 설정 추가
 
 ### mixins
+```js
+└ 📁 mixins // kebab-case 사용 (필요시 추가)
+    └ board.js
+```
+
+공통 스크립트 모듈을 모아두는 곳
 
 ### static
 
@@ -167,13 +172,13 @@ ex) /static/robots.txt -> http://{domain}/robots.txt
 store 디렉토리는 저장소의 개념으로 Vuex Store 파일을 포함한다. store에 저장된 정보는 라우터가 이동해도 유지된다.  
 메뉴 depth, 또는 기능별 디렉토리를 구분하고 하위에 `index.js`를 작성한다.
 
-### nuxt.config.js
+### vue.config.js
 
 ```js
-└ nuxt.config.js
+└ vue.config.js
 ```
 
-Nuxt 구성 파일
+Vue 구성 파일
 
 ## 2. Store Vuex
 
@@ -212,6 +217,7 @@ Vue 화면에서의 사용법
 /*
     /sample/list.vue
 */
+as-is
 <script>
 export default {
     methods: {
@@ -229,9 +235,26 @@ export default {
     }
 }
 </script>
+
+to-be
+<script setup>
+  import { ref } from "vue";
+  import { useStore } from "vuex"
+  
+  const store = userStore(); // store 호출을 위한 선언
+  
+  let count = ref(0); // 변수 선언
+  
+    const count = async () => { // 비동기일 경우 async를 붙여준다
+    await store.dispatch("sample/count");
+  }
+</script>
 ```
 
-2. `mapState`, `mapMutations`, `mapActions` 사용
+자바스크립트와 구조가 비슷함
+
+
+2. `mapState`, `mapMutations`, `mapActions` 사용 (미사용)
 
 - vuex를 더 편리하게 사용하게 해주는 helper
 
@@ -262,7 +285,7 @@ export default {
 </script>
 ```
 
-## 3. 공통 가이드
+## 3. 공통 가이드(미사용)
 
 ```js
 // vue 페이지 내 스크립트 선언 순서
