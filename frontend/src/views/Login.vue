@@ -52,7 +52,7 @@ const login = async () => {
     // 로그인 성공 시 메인화면으로 이동
     await router.push("/board");
   } catch (e) {
-    alert(e.response.data);
+    console.log(e);
   }
 };
 const required = [
