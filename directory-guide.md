@@ -1,5 +1,35 @@
 # 패키지 구조 가이드
 
+## 자바 디렉토리 구조
+
+```js
+└ 📁 java
+    └ 📁 com
+        └ 📁 sample
+            └ 📁 sample
+                └ 📁 domain // API 관련
+                    └ 📁 board // Pascal Case 작성
+                        └ 📁 controller // Rest API, controller 구성
+                        └ 📁 application // service, handler 구성
+                        └ 📁 dao // repository.class 인터페이스 구성
+                        └ 📁 domain // domain.class 구성, DB와 직접 연결 클래스
+                        └ 📁 dto // Dto.class 구성, domain을 훼손시키지 않기 위해 사용
+                        └ 📁 exception // API 관련 exception을 모아둠
+                └ 📁 global // 공통 관련
+                    └ 📁 auth // security, jwt 등 로그인 관련 공통 클래스
+                    └ 📁 common // 공통 클래스
+                    └ 📁 config // 공통 설정 클래스
+                    └ 📁 util // 공통 유틸 클래스
+└ 📁 resources
+    └ 📁 mapper // mybatis mapper xml 관련
+    └ 📁 static // vue template, css 등
+        └ 📁 css
+        └ 📁 fonts
+        └ 📁 img
+        └ 📁 js
+    └ 📄 application.properties // 자바 설정이 저장된 파일
+```
+
 ## 계층형 디렉토리 구조
 ```
 com
