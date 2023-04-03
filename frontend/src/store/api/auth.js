@@ -18,6 +18,7 @@ export default {
   getters: {},
   mutations: {
     setMember(state, data) {
+      console.log("Login : " + data)
       state.member = data;
       localStorage.setItem("member", JSON.stringify(data));
       axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
@@ -34,7 +35,10 @@ export default {
     // 로그인
     async login({ commit }, payload) {
       return await axios.post("/api/login", payload).then((response) => {
-        commit("setMember", response.data);
+        console.log(response)
+        if(response.status == "200") {
+          commit("setMember", response.data);
+        }
       });
     },
     // 회원가입

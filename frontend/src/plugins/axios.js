@@ -2,11 +2,24 @@ import axios from "axios";
 
 const instance = axios.create({
   withCredentials: true, // Header에 Authorization이 있을 경우 true 처리
+    baseURL: "http://localhost:3000",
 });
 
-  let objMember = JSON.parse(localStorage.getItem("member"));
-  const token = objMember.token;
-  instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  instance.interceptors.request.use(
+      (config) => {
+
+      let objMember = JSON.parse(localStorage.getItem("member"));
+      console.log("objMember : " + objMember)
+      if(objMember != null){
+          const token = objMember.token;
+          //instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+          config.headers.Authorization = `Bearer ${token}`;
+      }
+
+        config.headers["Access-Control-Allow-Origin"] = "*";
+        return config;
+      }
+  )
 
 // instance.interceptors.request.use(
 //     function (config) {
