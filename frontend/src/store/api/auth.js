@@ -35,7 +35,6 @@ export default {
     // 로그인
     async login({ commit }, payload) {
       return await axios.post("/api/login", payload).then((response) => {
-        console.log(response)
         if(response.status == "200") {
           commit("setMember", response.data);
         }

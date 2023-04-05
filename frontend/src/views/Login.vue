@@ -22,6 +22,7 @@ let rPw = ref(null);
 let rEmail = ref(null);
 let rName = ref(null);
 let rNickname = ref(null);
+let rRole = ref(null);
 
 // let rId = ref('member');
 // let rPw = ref('1234');
@@ -101,12 +102,12 @@ const registration = async () => {
       nickname: rNickname.value,
       name: rName.value,
       email: rEmail.value,
+      role: rRole.value,
     });
-
     alert("회원가입이 완료되었습니다!");
     isShow.value = !isShow.value;
   } catch (e) {
-    console.log(e.response.data);
+    console.log(e);
   }
 };
 </script>
@@ -127,6 +128,7 @@ const registration = async () => {
             ></v-text-field>
 
             <v-text-field
+                type="password"
               v-model="userPw"
               :readonly="loading"
               :rules="required"
@@ -209,7 +211,8 @@ const registration = async () => {
 
             <v-checkbox
               color="secondary"
-              label="개인정보 수집 이용 동의"
+              label="관리자 계정으로 회원가입"
+              v-model="rRole"
             ></v-checkbox>
           </v-container>
 

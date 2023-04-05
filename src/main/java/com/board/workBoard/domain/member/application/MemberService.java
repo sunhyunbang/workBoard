@@ -55,7 +55,10 @@ public class MemberService {
                     .email(request.getEmail())
                     .build();
 
-            member.setRoles(Collections.singletonList(Authority.builder().name("ROLE_USER").build()));
+            if (request.isRole())
+                member.setRoles(Collections.singletonList(Authority.builder().name("ROLE_ADMIN").build()));
+            else
+                member.setRoles(Collections.singletonList(Authority.builder().name("ROLE_USER").build()));
 
             memberRepository.save(member);
         } catch (Exception e) {
