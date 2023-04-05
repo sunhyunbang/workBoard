@@ -57,8 +57,7 @@ const scopeLogOut = () => {
           </div>
         </li>
         <li>
-<!--          <a :href="store.commit('clearMember')" class="btn_login"><span class="txt">로그아웃</span></a>-->
-          <button type="button" @click ="scopeLogOut" class="txt">LogOut</button>
+          <a @click="scopeLogOut" class="btn_login" style="cursor: pointer;"><span class="txt">로그아웃</span></a>
         </li>
         <li>
           <a href="Template.asp?BoardIDX=5" class="btn_login" target="_blank"><span class="txt">템플릿 등록</span></a>

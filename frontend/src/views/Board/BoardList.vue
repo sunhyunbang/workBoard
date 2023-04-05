@@ -1,5 +1,5 @@
 <script setup>
-import Header from "@/views/Header/Header";
+import Header from "@/components/Header/Header";
 
 </script>
 
