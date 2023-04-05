@@ -1,35 +1,83 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '2.7.9'
-	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'java'
+    id 'org.springframework.boot' version '2.7.9'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+//	id 'com.moowork.node' version '1.3.1'
+    id 'com.github.node-gradle.node' version '3.1.1' // spring boot에서 node 사용
 }
 
 group = 'com.board'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+//* spring boot 실행 시 Vue.js 자동 build
+node {
+    workDir = file("./frontend")
+    npmWorkDir = file("./frontend")
+    nodeModulesDir = file("./frontend")
+}
+
+task setUp(type: NpmTask) {
+    description = "Install Node.js Packages"
+    args = ['install']
+    inputs.files file('pacage.json')
+    outputs.files file('node_modules')
+}
+
+task buildFrontEnd(type: NpmTask, dependsOn: setUp) {
+    description = "Build vue.js"
+    args = ['run', 'build']
+}
+
+processResources.dependsOn 'buildFrontEnd'
+// spring boot 실행 시 Vue.js 자동 build */
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
+    // jwt
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+    // h2 => data source setting 전 임시 테이블
+    //implementation 'com.h2database:h2'
+    // jpa
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
+    // swagger new version
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.14'
+	//implementation 'io.springfox:springfox-boot-starter:3.0.0'
+	//implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+    // maria db driver
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+    implementation 'org.mariadb.jdbc:mariadb-java-client'
+    // thymeleaf
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+    // spring security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    // data jdbc
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    // web
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // devtools (live reload, automatic restart 등 기능)
+    implementation 'org.springframework.boot:spring-boot-devtools'
+    // lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // test impl
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
