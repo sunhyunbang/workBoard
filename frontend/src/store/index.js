@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import auth from "./api/auth";
+import sample from "./sample/index";
 
 export default createStore({
   namespaced: true,
@@ -9,5 +10,6 @@ export default createStore({
   actions: {},
   modules: {
     auth,
+    sample
   },
 });

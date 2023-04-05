@@ -4,10 +4,20 @@ import Index from "../views/Index";
 
 const routes = [
   {
+    path: "/sample",
+    name: "sample",
+    component: () => import("../views/sample/Sample"),
+  },
+  {
     path: "/",
     name: "index",
     component: Index,
     meta : { requiresAuth : true },
+  },
+  {
+    path: "/sample",
+    name: "sample",
+    component: () => import("../views/sample/Sample"),
   },
   {
     path: "/Login",
@@ -16,9 +26,12 @@ const routes = [
     meta : { requiresAuth : false },
   },
   {
-    path: "/sample",
-    // component: () =>
-    //   import("../views/sample/Scomponent.vue"),
+    path: "/logout",
+    name: "logout",
+    beforeEnter: (to, form, next) => {
+
+      next({path: "/login", form: "Login"})
+    },
   },
   {
     path: "/board",

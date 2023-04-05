@@ -4,34 +4,25 @@ import lombok.*;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name ="sample_tb") // database table name
 @Getter
-@Entity // Entity name
-@Table(name ="SAMPLE_TB") // database table name
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Sample {
-    // entity.class 구성
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long pk;
+    private Long id;
 
-    @Column(name = "USER_EMAIL", nullable = false)
-    private String userEmail;
+    @Column(unique = true)
+    private String email;
 
-    @Column(name = "USER_PW", nullable = false)
-    private String userPw;
+    private String pw;
 
-    @Column(name = "USER_NM", nullable = false)
-    private String userNm;
+    private String name;
 
-    @Column(name = "USER_TEL", nullable = true)
-    private String userTel;
-
-    @Column(name = "USE_YN", nullable = false)
-    private String useYn;
-//    @Column(name = "ROLE")
-//    private String role;
+    private String tel;
 
 }

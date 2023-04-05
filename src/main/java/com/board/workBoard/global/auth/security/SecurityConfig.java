@@ -87,7 +87,7 @@ public class SecurityConfig {
 //                .antMatchers("/","/**").permitAll()
                 .antMatchers("/api/register", "/api/login", "/login").permitAll()
                 .antMatchers(PERMIT_LIST).permitAll()
-                .antMatchers("/api/user/**", "/api/admin/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/api/user/**", "/api/admin/**", "/api/**").hasAnyRole("USER", "ADMIN")
 //                .antMatchers("/admin/**").hasRole("ADMIN")
 //                .antMatchers("/user/**").hasRole("USER")
                 .anyRequest().denyAll()

@@ -324,3 +324,15 @@ export default {
     methods: {},
 }
 ```
+
+## 4. 표기법
+```js
+  스네이크 케이스(snake case)
+    var snake_case;
+
+  파스칼 케이스(pascal case) 
+    var PascalCase;
+  
+  카멜 케이스(camel case)
+    var camelCase;
+```
