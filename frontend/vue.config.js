@@ -11,6 +11,7 @@ module.exports = defineConfig({
         // 해당 값에 따라 8080으로 proxy 처리
         target: "http://localhost:9090",
         changeOrigin: true, // cross origin 허용
+        logLevel: "debug",
       },
     },
   },

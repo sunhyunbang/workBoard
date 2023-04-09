@@ -5,20 +5,17 @@ import axios from "@/plugins/axios";
 
 const store = useStore();
 
-let userName = JSON.parse(localStorage.getItem("member"));
-let member = axios.defaults.headers.common["Authorization"];
-
-console.log("headers Authorization : " + member);
+let member = store.state.auth.member;
 
 // let userName = ref('click');
 
-const getUser = async () =>{
-  try{
-    store.dispatch("auth/getUser","snhyun")
-        .then((res) =>{
+const getUser = async () => {
+  try {
+    store.dispatch("auth/getUser", "snhyun")
+        .then((res) => {
           console.log(res.name);
         })
-  }catch (e) {
+  } catch (e) {
 
   }
 }
@@ -26,7 +23,7 @@ const getUser = async () =>{
 const scopeLogOut = () => {
   try {
     store.dispatch("auth/logout")
-  }catch (e) {
+  } catch (e) {
     console.log(e.response.data)
   }
 
@@ -53,7 +50,7 @@ const scopeLogOut = () => {
       <ul class="list_mini_serve">
         <li>
           <div class="box_btn">
-            <button type="button" class="btn_alarm" @click="getUser"><span class="txt">{{ userName.name }}</span></button>
+            <button type="button" class="btn_alarm" @click="getUser"><span class="txt">{{ member.name }}</span></button>
           </div>
         </li>
         <li>

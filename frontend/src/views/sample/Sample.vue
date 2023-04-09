@@ -4,6 +4,13 @@ import { useStore } from "vuex";
 
 const store = useStore(); // useStore 훅을 사용하여 store 접근
 
+
+/*
+let sample1 = 0;
+let sample2 = ref(0);
+위 둘의 차이점은 ref(reactive reference)는 변경사항이 바로 반영되는 속성을 가짐
+ */
+
 // store 호출 관련
 const data1 = store.state.sample.counter; // store.state 고정 sample/counter 호출
 console.log("state 로 호출한 data =>", data1)

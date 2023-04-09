@@ -3,32 +3,17 @@ package com.board.workBoard.global.auth.security;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.client.support.BasicAuthenticationInterceptor;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.access.AccessDeniedHandler;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
-import javax.servlet.DispatcherType;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import java.io.IOException;
 import java.util.List;
 
 
@@ -56,6 +41,10 @@ public class SecurityConfig {
             "/js/**",
             "/css/**",
             "/favicon.ico",
+            /* login api */
+            "/api/register",
+            "/api/login",
+            "/login",
     };
 
     private final JwtProvider jwtProvider;
@@ -84,13 +73,10 @@ public class SecurityConfig {
                 .and()
                 // 조건별 요청 허용/제한 설정
                 .authorizeRequests()
-//                .antMatchers("/","/**").permitAll()
-                .antMatchers("/api/register", "/api/login", "/login").permitAll()
-                .antMatchers(PERMIT_LIST).permitAll()
-                .antMatchers("/api/user/**", "/api/admin/**", "/api/**").hasAnyRole("USER", "ADMIN")
-//                .antMatchers("/admin/**").hasRole("ADMIN")
-//                .antMatchers("/user/**").hasRole("USER")
-                .anyRequest().denyAll()
+                .antMatchers(PERMIT_LIST).permitAll() // 권한이 없어도 접근 가능 목록
+                .antMatchers("/api/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/api/admin/**").hasAnyRole( "ADMIN")
+                .anyRequest().denyAll() // 위 권한을 제외한 모든 사용자의 접근을 거부
                 .and()
                 .addFilterBefore(new JwtAuthenticationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling() // 에러 핸들링
@@ -98,15 +84,28 @@ public class SecurityConfig {
                     response.setStatus(403);
                     response.setCharacterEncoding("utf-8");
                     response.setContentType("text/html; charset=UTF-8");
-                    response.getWriter().write("권한이 없는 사용자입니다.");
-//                    response.sendRedirect("/login");
+
+                    String redirectUrl = request.getHeader("x-forwarded-proto") + "://"+ request.getHeader("x-forwarded-host") + "/logout";
+                    // 요청
+                    response.getWriter().write("접근 권한이 없습니다.");
+
                 })
                 .authenticationEntryPoint((request, response, authException) -> {
                     response.setStatus(401);
                     response.setCharacterEncoding("utf-8");
                     response.setContentType("text/html; charset=UTF-8");
-                    response.getWriter().write("인증되지 않은 사용자입니다.");
-//                    response.sendRedirect("/login");
+
+                    // 리다이렉트될 url
+                    String redirectUrl = request.getHeader("x-forwarded-proto") + "://"+ request.getHeader("x-forwarded-host") + "/logout";
+                    if (request.getRequestURI().equals("/api/login")) { // 계정 정보가 다를 시
+                        response.setHeader("errortype", "account");
+                        response.getWriter().write(authException.getMessage());
+                    }
+                    else { // 토큰이 존재하지 않거나 만료되었을 시
+                        response.setHeader("errortype", "authority");
+                        response.getWriter().write("인증이 만료됐거나 유효하지 않습니다.");
+                    }
+//                    response.sendRedirect(redirectUrl);
                 });
 
         return http.build();

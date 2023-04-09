@@ -28,10 +28,10 @@ public class MemberService {
     private final MemberMapper memberMapper;
 
     public SignResponse login(SignRequest request) throws Exception {
-        Member member = memberRepository.findByAccount(request.getAccount()).orElseThrow(() -> new BadCredentialsException("잘못된 계정정보입니다."));
+        Member member = memberRepository.findByAccount(request.getAccount()).orElseThrow(() -> new BadCredentialsException("계정 정보가 올바르지 않습니다."));
 
         if (!passwordEncoder.matches(request.getPassword(), member.getPassword())) {
-            throw new BadCredentialsException("잘못된 계정정보입니다.");
+            throw new BadCredentialsException("계정 정보가 올바르지 않습니다.");
         }
 
         return SignResponse.builder()
