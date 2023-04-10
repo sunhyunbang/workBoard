@@ -40,6 +40,20 @@ const routes = [
       import("../views/Board/BoardList.vue"),
     meta : { requiresAuth : true },
   },
+  {
+    path: "/board2/board",
+    name: "board2",
+    component: () =>
+        import("../views/Board2/BoardList.vue"),
+    meta : { requiresAuth : true },
+  },
+  {
+    path: "/board2/regist",
+    name: "boardRegist",
+    component: () =>
+        import("../views/Board2/BoardRegist.vue"),
+    meta : { requiresAuth : true },
+  },
 ];
 
 const router = createRouter({

@@ -444,7 +444,6 @@ import Header from "@/components/Header/Header";
 </div>
 </div>
 </div>
-
 </template>
 
 <!--<script>-->
