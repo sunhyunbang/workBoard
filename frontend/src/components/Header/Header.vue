@@ -28,6 +28,8 @@ const scopeLogOut = () => {
   }
 
 }
+
+
 </script>
 <template>
   <div id="header">
@@ -38,7 +40,7 @@ const scopeLogOut = () => {
     <div id="nav">
       <ul class="list_gnb">
 
-        <li id="list_gnb_1_5" class="on"><a href="MyList.asp?BoardIdx=1,5">MY</a></li><!-- 통합 처리 1,5 -->
+        <li id="list_gnb_1_5" class="on"><a :href="`../board/mylist`">MY</a></li><!-- 통합 처리 1,5 -->
         <li id="list_gnb_5"><a href="List.asp?BoardIdx=5">부동산써브 업무요청</a></li>
         <li id="list_gnb_1"><a href="List.asp?BoardIdx=1">벼룩시장 업무요청</a></li>
 
