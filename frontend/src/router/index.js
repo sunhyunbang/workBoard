@@ -42,6 +42,14 @@ const routes = [
             import("../views/Board/BoardList.vue"),
         meta: {requiresAuth: true},
     },
+    {
+        path: "/board/mylist",
+        name: "mylist",
+        component: () =>
+            import("../views/Board/Mylist.vue"),
+        meta: {requiresAuth: true},
+    },
+
 ];
 
 const router = createRouter({
